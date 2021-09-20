@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Super bikes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <h1 id="super-bike-title">Hello Super bike fan!!!</h1>
+       
+    <div *ngFor="let b of bikes">
+      <p>{{b.model}}</p>
+    </div>
+
+    <ion-button color="primary" (click)="goToOtherPage()">Go to other page</ion-button>
+  </div>
+  <p>hola</p>
+</ion-content>

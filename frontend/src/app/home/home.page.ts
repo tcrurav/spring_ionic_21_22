@@ -11,6 +11,7 @@ import { BicyclesService } from '../services/bicycles.service';
 export class HomePage implements OnInit{
 
   public bikes: Array<Bicycle> = [];
+  public myBike: Bicycle;
 
   constructor(private router: Router, private bicycleService: BicyclesService) {}
   
@@ -18,6 +19,12 @@ export class HomePage implements OnInit{
     this.bicycleService.getBicycles().subscribe((b: Array<Bicycle>) => {
       this.bikes = b;
     })
+
+    this.bicycleService.getBicycleById(3).subscribe( (b: Bicycle) => {
+      this.myBike = b;
+      console.log("llegó b");
+      console.log(b.model)
+    });
   }
 
   goToOtherPage(){

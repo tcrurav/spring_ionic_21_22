@@ -15,4 +15,8 @@ export class BicyclesService {
   getBicycles(): Observable<Bicycle[]>{
     return this.httpClient.get<Bicycle[]>(this.endpoint);
   }
+
+  getBicycleById(id: number): Observable<Bicycle>{
+    return this.httpClient.get<Bicycle>(this.endpoint + "/" + id);
+  }
 }

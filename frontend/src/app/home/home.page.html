@@ -17,8 +17,10 @@
     <h1 id="super-bike-title">Hello Super bike fan!!!</h1>
        
     <div *ngFor="let b of bikes">
-      <p>{{b.model}}</p>
+      <p>{{b.model}}, {{b.year}}</p>
     </div>
+
+    <p *ngIf="myBike">La bicicleta 3 es del modelo: {{myBike.model}}</p>
 
     <ion-button color="primary" (click)="goToOtherPage()">Go to other page</ion-button>
   </div>

@@ -3,8 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Bicycle } from '../models/bicycle';
 
+// const httpOptions = {
+//   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+// };
+
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
 };
 
 @Injectable({
@@ -25,8 +29,15 @@ export class BicyclesService {
   }
 
   createBicycle(bicycle: Bicycle){
+    const encodedBody = new URLSearchParams();
+    encodedBody.append("model", bicycle.model);
+    encodedBody.append("year", bicycle.year.toString());
+    const body = encodedBody.toString();
+
     console.log("createBicycle")
     console.log(JSON.stringify(bicycle))
-    this.httpClient.post<Bicycle>(this.endpoint, JSON.stringify(bicycle), httpOptions);
+    this.httpClient.post<Bicycle>(this.endpoint, body, httpOptions).subscribe(() => {
+      console.log("volvió")
+    });
   }
 }

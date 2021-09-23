@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tiburcio.superbikes.entity.models.Bicycle;
 import org.tiburcio.superbikes.entity.services.IBicycleService;
@@ -34,6 +35,12 @@ public class BicycleController {
 		};
 		
 		return null;
+	}
+	
+	@PostMapping("/bicycles")
+	void add(Bicycle bicycle) {
+		System.out.println(bicycle.getModel());
+		bicycleService.add(bicycle);
 	}
 
 }

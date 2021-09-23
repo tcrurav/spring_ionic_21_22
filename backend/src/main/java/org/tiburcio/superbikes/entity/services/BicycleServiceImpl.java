@@ -21,8 +21,7 @@ public class BicycleServiceImpl implements IBicycleService {
 
 	@Override
 	public void add(Bicycle bicycle) {
-		// TODO Auto-generated method stub
-		
+		bicycleDao.save(bicycle);
 	}
 
 	@Override

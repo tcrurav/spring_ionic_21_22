@@ -31,4 +31,10 @@ export class HomePage implements OnInit{
     this.router.navigateByUrl("/other-page");
   }
 
+  addAnotherBicycle(){
+    console.log("addAnotherBicycle")
+    const bicycle: Bicycle = { id: 0, model: "peperoni", year: 1976 };
+    this.bicycleService.createBicycle(bicycle);
+  }
+
 }

@@ -37,4 +37,10 @@ export class HomePage implements OnInit{
     this.bicycleService.createBicycle(bicycle);
   }
 
+  addAnotherBicycleUsingJSON(){
+    console.log("addAnotherBicycle")
+    const bicycle: Bicycle = { id: 0, model: "peperoni JSON", year: 1976 };
+    this.bicycleService.createBicycleUsingJson(bicycle);
+  }
+
 }

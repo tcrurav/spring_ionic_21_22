@@ -7,6 +7,10 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const httpOptionsUsingUrlEncoded = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,9 +28,22 @@ export class BicyclesService {
     return this.httpClient.get<Bicycle>(this.endpoint + "/" + id);
   }
 
-  createBicycle(bicycle: Bicycle){
+  createBicycle(bicycle: Bicycle): Observable<Bicycle>{
+    let bodyEncoded = new URLSearchParams();
+    bodyEncoded.append("model", bicycle.model);
+    bodyEncoded.append("year", bicycle.year.toString());
+    const body = bodyEncoded.toString();
+
     console.log("createBicycle")
     console.log(JSON.stringify(bicycle))
-    this.httpClient.post<Bicycle>(this.endpoint, JSON.stringify(bicycle), httpOptions);
+    return this.httpClient.post<Bicycle>(this.endpoint, body, httpOptionsUsingUrlEncoded);
+  }
+
+  createBicycleUsingJSON(bicycle: Bicycle): Observable<Bicycle>{
+    return this.httpClient.post<Bicycle>(this.endpoint, JSON.stringify(bicycle), httpOptions);
+  }
+
+  deleteBicycle(idBicycle: number): Observable<Bicycle>{
+    return this.httpClient.delete<Bicycle>(this.endpoint + "/" + idBicycle);
   }
 }

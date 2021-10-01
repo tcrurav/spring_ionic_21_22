@@ -26,8 +26,7 @@ public class BicycleServiceImpl implements IBicycleService {
 
 	@Override
 	public void delete(long idBicycle) {
-		// TODO Auto-generated method stub
-		
+		bicycleDao.deleteById(idBicycle);
 	}
 
 	@Override
